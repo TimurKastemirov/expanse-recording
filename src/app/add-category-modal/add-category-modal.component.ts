@@ -10,13 +10,14 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 export class AddCategoryModalComponent implements OnInit {
 
     title: string;
-    closeBtnName: string;
-    list: any[] = [];
+    result: boolean;
 
     constructor(public bsModalRef: BsModalRef) {}
 
-    ngOnInit() {
-        this.list.push('PROFIT!!!');
-    }
+    ngOnInit() {}
 
+    save() {
+        this.result = true;
+        this.bsModalRef.hide();
+    }
 }

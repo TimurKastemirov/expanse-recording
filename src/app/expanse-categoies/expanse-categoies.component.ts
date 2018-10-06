@@ -3,6 +3,10 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import { AddCategoryModalComponent } from '../add-category-modal/add-category-modal.component';
+import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
+
+import { Category } from '../category';
+import { CATEGORIES } from '../mock-categories';
 
 @Component({
     selector: 'app-expanse-categoies',
@@ -11,24 +15,28 @@ import { AddCategoryModalComponent } from '../add-category-modal/add-category-mo
 })
 export class ExpanseCategoiesComponent implements OnInit {
 
+    list: Category[] = CATEGORIES;
     bsModalRef: BsModalRef;
     constructor(private modalService: BsModalService) {}
 
-    ngOnInit() {
-    }
+    ngOnInit() {}
 
-    addCategory() {
+    editCategory(id) {
         const initialState = {
-            list: [
-                'Open a modal with component',
-                'Pass your data',
-                'Do something else',
-                '...'
-            ],
-            title: 'Modal with component'
+            title: id ? 'Edit category #' + id : 'Add new category'
         };
         this.bsModalRef = this.modalService.show(AddCategoryModalComponent, {initialState});
         this.bsModalRef.content.closeBtnName = 'Close';
+    }
+
+    removeCategory(id) {
+        const config = {
+            class: 'modal-md',
+            initialState: {
+                message: 'Are You sure to remove category #' + id + ' ?'
+            }
+        };
+        this.bsModalRef = this.modalService.show(ConfirmModalComponent, config);
     }
 
 }

@@ -6,9 +6,10 @@ import {AppRoutingModule} from './app-routing.module';
 import {ExpanseCategoiesComponent} from './expanse-categoies/expanse-categoies.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {ExpanseNotesComponent} from './expanse-notes/expanse-notes.component';
-import { AddCategoryModalComponent } from './add-category-modal/add-category-modal.component';
 
 import { ModalModule } from 'ngx-bootstrap';
+import { AddCategoryModalComponent } from './add-category-modal/add-category-modal.component';
+import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 
 
 
@@ -19,7 +20,8 @@ import { ModalModule } from 'ngx-bootstrap';
         ExpanseCategoiesComponent,
         DashboardComponent,
         ExpanseNotesComponent,
-        AddCategoryModalComponent
+        AddCategoryModalComponent,
+        ConfirmModalComponent
     ],
     imports: [
         BrowserModule,
@@ -28,7 +30,10 @@ import { ModalModule } from 'ngx-bootstrap';
     ],
     providers: [],
     bootstrap: [AppComponent],
-    entryComponents: [AddCategoryModalComponent]
+    entryComponents: [
+        AddCategoryModalComponent,
+        ConfirmModalComponent
+    ]
 })
 export class AppModule {
 }
