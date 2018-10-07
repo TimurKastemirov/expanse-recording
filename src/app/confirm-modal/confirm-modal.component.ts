@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
-
 @Component({
     selector: 'app-confirm-modal',
     templateUrl: './confirm-modal.component.html',

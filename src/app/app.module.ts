@@ -10,6 +10,7 @@ import {ExpanseNotesComponent} from './expanse-notes/expanse-notes.component';
 import { ModalModule } from 'ngx-bootstrap';
 import { AddCategoryModalComponent } from './add-category-modal/add-category-modal.component';
 import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
+import {FormsModule} from '@angular/forms';
 
 
 
@@ -25,6 +26,7 @@ import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
     ],
     imports: [
         BrowserModule,
+        FormsModule,
         AppRoutingModule,
         ModalModule.forRoot()
     ],
