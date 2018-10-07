@@ -11,6 +11,8 @@ import { ModalModule } from 'ngx-bootstrap';
 import { AddCategoryModalComponent } from './add-category-modal/add-category-modal.component';
 import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 import {FormsModule} from '@angular/forms';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { DatepickerComponent } from './datepicker/datepicker.component';
 
 
 
@@ -22,13 +24,15 @@ import {FormsModule} from '@angular/forms';
         DashboardComponent,
         ExpanseNotesComponent,
         AddCategoryModalComponent,
-        ConfirmModalComponent
+        ConfirmModalComponent,
+        DatepickerComponent
     ],
     imports: [
         BrowserModule,
         FormsModule,
         AppRoutingModule,
-        ModalModule.forRoot()
+        ModalModule.forRoot(),
+        BsDatepickerModule.forRoot()
     ],
     providers: [],
     bootstrap: [AppComponent],
