@@ -60,7 +60,7 @@ export class Storage {
         const data = this.myGetter(window.localStorage.getItem(this.key));
         let list = data.list;
         list = list.map((el) => {
-            console.log(el, id);
+            // console.log(el, id);
             if (el.id === id) {
                 return Object.assign({}, el, item);
             } else {
