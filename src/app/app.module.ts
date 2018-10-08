@@ -13,8 +13,7 @@ import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 import {FormsModule} from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { DatepickerComponent } from './datepicker/datepicker.component';
-
-
+import { AddExpanseNoteComponent } from './add-expanse-note/add-expanse-note.component';
 
 
 @NgModule({
@@ -25,7 +24,8 @@ import { DatepickerComponent } from './datepicker/datepicker.component';
         ExpanseNotesComponent,
         AddCategoryModalComponent,
         ConfirmModalComponent,
-        DatepickerComponent
+        DatepickerComponent,
+        AddExpanseNoteComponent
     ],
     imports: [
         BrowserModule,
@@ -38,7 +38,8 @@ import { DatepickerComponent } from './datepicker/datepicker.component';
     bootstrap: [AppComponent],
     entryComponents: [
         AddCategoryModalComponent,
-        ConfirmModalComponent
+        ConfirmModalComponent,
+        AddExpanseNoteComponent
     ]
 })
 export class AppModule {

@@ -3,7 +3,7 @@
 		<app-datepicker></app-datepicker>
 	</div>
 	<div class="col-md-2 offset-6" style="text-align: right">
-		<button type="button" class="btn btn-primary">Add New</button>
+		<button type="button" class="btn btn-primary" (click)="editNote(0)">Add New</button>
 	</div>
 </div>
 <div class="row">
@@ -25,8 +25,8 @@
 				<td>2018-10-10</td>
 				<td>100</td>
 				<td>
-					<button type="button" class="btn btn-warning">Edit</button>
-					<button type="button" class="btn btn-danger">Remove</button>
+					<button type="button" class="btn btn-warning" (click)="editNote(1)">Edit</button>
+					<button type="button" class="btn btn-danger" (click)="removeNote(1)">Remove</button>
 				</td>
 			</tr>
 			<tr>
