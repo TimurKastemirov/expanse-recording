@@ -4,8 +4,9 @@
 		       placeholder="Datepicker"
 		       class="form-control"
 		       bsDatepicker
-		       [(ngModel)]="bsValue"
+		       [(ngModel)]="date"
 		       [bsConfig]="bsConfig"
+		       (bsValueChange)="onValueChange($event)"
 		>
 	</div>
 </div>

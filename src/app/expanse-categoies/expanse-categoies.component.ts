@@ -28,7 +28,8 @@ export class ExpanseCategoiesComponent implements OnInit {
 
     getList(): void {
         this.categoriesService.getList()
-            .subscribe(categoriesList => this.list = categoriesList);
+            .subscribe(categoriesList => this.list = categoriesList)
+            .unsubscribe();
     }
 
     editCategory(id) {

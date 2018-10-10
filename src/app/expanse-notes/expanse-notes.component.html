@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-4">
-		<app-datepicker></app-datepicker>
+		<app-datepicker [(date)]="date"></app-datepicker>
 	</div>
 	<div class="col-md-2 offset-6" style="text-align: right">
 		<button type="button" class="btn btn-primary" (click)="editNote(0)">Add New</button>
@@ -19,34 +19,14 @@
 			</tr>
 			</thead>
 			<tbody>
-			<tr>
-				<td>1</td>
-				<td>Steve Smith</td>
-				<td>2018-10-10</td>
-				<td>100</td>
+			<tr *ngFor="let item of list">
+				<td>{{item.id}}</td>
+				<td>{{item.name}}</td>
+				<td>{{item.date | date}}</td>
+				<td>{{item.amount}}</td>
 				<td>
-					<button type="button" class="btn btn-warning" (click)="editNote(1)">Edit</button>
-					<button type="button" class="btn btn-danger" (click)="removeNote(1)">Remove</button>
-				</td>
-			</tr>
-			<tr>
-				<td>2</td>
-				<td>David Warner</td>
-				<td>2018-10-10</td>
-				<td>100</td>
-				<td>
-					<button type="button" class="btn btn-warning">Edit</button>
-					<button type="button" class="btn btn-danger">Remove</button>
-				</td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td>Joe Root</td>
-				<td>2018-10-10</td>
-				<td>100</td>
-				<td>
-					<button type="button" class="btn btn-warning">Edit</button>
-					<button type="button" class="btn btn-danger">Remove</button>
+					<button type="button" class="btn btn-warning" (click)="editNote(item.id)">Edit</button>
+					<button type="button" class="btn btn-danger" (click)="removeNote(item.id)">Remove</button>
 				</td>
 			</tr>
 			</tbody>

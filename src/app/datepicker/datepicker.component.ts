@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import { format } from '../structures/date-format';
 
 @Component({
@@ -7,12 +7,16 @@ import { format } from '../structures/date-format';
     styleUrls: ['./datepicker.component.css']
 })
 export class DatepickerComponent implements OnInit {
+    @Input() date: Date;
 
-    bsValue = new Date();
     bsConfig = { dateInputFormat: format };
 
     constructor() {}
 
     ngOnInit() {}
+
+    onValueChange(value: Date): void {
+        console.log(value);
+    }
 
 }

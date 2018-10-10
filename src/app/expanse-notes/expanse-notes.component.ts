@@ -4,6 +4,10 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import { AddExpanseNoteComponent } from '../add-expanse-note/add-expanse-note.component';
 import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
+import { ExpansesService } from '../expanses.service';
+import {Expanse} from '../structures/expanse';
+import * as moment from 'moment';
+import { format } from '../structures/date-format';
 
 @Component({
     selector: 'app-expanse-notes',
@@ -12,16 +16,43 @@ import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component'
 })
 export class ExpanseNotesComponent implements OnInit {
     bsModalRef: BsModalRef;
+    date = new Date();
+    list: Expanse[];
 
-    constructor(private modalService: BsModalService) {}
+    constructor(
+        private modalService: BsModalService,
+        private expanseService: ExpansesService
+    ) {}
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.getList();
+    }
+
+    getList() {
+        this.expanseService.getList()
+            .subscribe( list => this.list = list)
+            .unsubscribe();
+    }
 
     editNote(id: number) {
-        const initialState = {
-            title: id ? 'Edit expanse note # ' + id : 'Add expanse note',
-        };
-        this.bsModalRef = this.modalService.show(AddExpanseNoteComponent, {initialState});
+        this.expanseService.getItem(id).subscribe( item => {
+            const initialState = {
+                title: !!id ? 'Edit expanse note # ' + id : 'Add expanse note',
+                item: !!id ? item : {date: moment(this.date).format(format)}
+            };
+            this.bsModalRef = this.modalService.show(AddExpanseNoteComponent, {initialState});
+        }).unsubscribe();
+
+        const a = this.modalService.onHidden.subscribe(() => {
+            const item = this.bsModalRef.content.item;
+            const reason = this.bsModalRef.content.reason;
+            if (reason) {
+                this.expanseService.saveItem(id, item).subscribe( () => {
+                    this.getList();
+                }).unsubscribe();
+            }
+            a.unsubscribe();
+        });
     }
 
     removeNote(id: number) {
@@ -35,5 +66,15 @@ export class ExpanseNotesComponent implements OnInit {
             }
         };
         this.bsModalRef = this.modalService.show(ConfirmModalComponent, config);
+
+        const a = this.modalService.onHidden.subscribe( () => {
+            const result = this.bsModalRef.content.result;
+            if (result) {
+                this.expanseService.deleteItem(id).subscribe( deletedId => {
+                    this.getList();
+                }).unsubscribe();
+            }
+            a.unsubscribe();
+        });
     }
 }
