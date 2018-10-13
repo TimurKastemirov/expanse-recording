@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Expanse} from '../structures/expanse';
 import {ExpansesService} from '../expanses.service';
 import * as moment from 'moment';
-import {e} from '@angular/core/src/render3';
 
 @Component({
     selector: 'app-dashboard',
