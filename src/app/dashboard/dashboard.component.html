@@ -9,7 +9,7 @@
 		       [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
 		>
 	</div>
-	<div class="col-md-6">
+	<div class="col-md-6 text-center font-weight-bold" style="line-height: 38px">
 		<span>Total sum:</span>
 		{{calculateTotal()|currency:'₴'}}
 	</div>
@@ -26,7 +26,7 @@
 			<tr *ngFor="let item of list">
 				<td>{{item.name}}</td>
 				<td>{{item.date}}</td>
-				<td>{{item.amount}}</td>
+				<td>{{item.amount|currency:'₴'}}</td>
 			</tr>
 			</tbody>
 		</table>
