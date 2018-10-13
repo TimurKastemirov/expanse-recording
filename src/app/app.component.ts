@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {setTheme} from 'ngx-bootstrap/utils';
-import * as moment from 'moment';
 
 @Component({
     selector: 'app-root',
@@ -11,8 +10,5 @@ export class AppComponent {
     title = 'Expanse Recording';
     constructor() {
         setTheme('bs4'); // or 'bs4'
-        let now = moment(); // add this 2 of 4
-        console.log('hello world', now.format()); // add this 3 of 4
-        console.log(now.add(7, 'days').format()); // add this 4of 4
     }
 }

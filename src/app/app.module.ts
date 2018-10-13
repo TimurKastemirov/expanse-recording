@@ -12,7 +12,6 @@ import { AddCategoryModalComponent } from './add-category-modal/add-category-mod
 import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 import {FormsModule} from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { DatepickerComponent } from './datepicker/datepicker.component';
 import { AddExpanseNoteComponent } from './add-expanse-note/add-expanse-note.component';
 
 
@@ -24,7 +23,6 @@ import { AddExpanseNoteComponent } from './add-expanse-note/add-expanse-note.com
         ExpanseNotesComponent,
         AddCategoryModalComponent,
         ConfirmModalComponent,
-        DatepickerComponent,
         AddExpanseNoteComponent
     ],
     imports: [

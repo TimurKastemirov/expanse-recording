@@ -17,6 +17,7 @@ import { format } from '../structures/date-format';
 export class ExpanseNotesComponent implements OnInit {
     bsModalRef: BsModalRef;
     date = new Date();
+    bsConfig = { dateInputFormat: format };
     list: Expanse[];
 
     constructor(
@@ -48,6 +49,7 @@ export class ExpanseNotesComponent implements OnInit {
             const reason = this.bsModalRef.content.reason;
             if (reason) {
                 this.expanseService.saveItem(id, item).subscribe( () => {
+                    // can be argument for savedID
                     this.getList();
                 }).unsubscribe();
             }
@@ -70,7 +72,8 @@ export class ExpanseNotesComponent implements OnInit {
         const a = this.modalService.onHidden.subscribe( () => {
             const result = this.bsModalRef.content.result;
             if (result) {
-                this.expanseService.deleteItem(id).subscribe( deletedId => {
+                this.expanseService.deleteItem(id).subscribe( () => {
+                    // can be argument for deletedID
                     this.getList();
                 }).unsubscribe();
             }
