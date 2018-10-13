@@ -8,7 +8,11 @@
 		       (bsValueChange)="onValueChange($event)"
 		/>
 	</div>
-	<div class="col-md-2 offset-6" style="text-align: right">
+	<div class="col-md-4 text-center font-weight-bold" style="line-height: 38px">
+		<span class="align-middle">Common sum:</span>
+		{{calculateSum()|currency:'₴'}}
+	</div>
+	<div class="col-md-2 offset-2" style="text-align: right">
 		<button type="button" class="btn btn-primary" (click)="editNote(0)">Add New</button>
 	</div>
 </div>
@@ -20,7 +24,7 @@
 				<th>ID</th>
 				<th>Name</th>
 				<th>Date</th>
-				<th>Amount($)</th>
+				<th>Amount(₴)</th>
 				<th>Action</th>
 			</tr>
 			</thead>
@@ -29,7 +33,7 @@
 				<td>{{item.id}}</td>
 				<td>{{item.name}}</td>
 				<td>{{item.date | date}}</td>
-				<td>{{item.amount}}</td>
+				<td>{{item.amount|currency:'₴'}}</td>
 				<td>
 					<button type="button" class="btn btn-warning" (click)="editNote(item.id)">Edit</button>
 					<button type="button" class="btn btn-danger" (click)="removeNote(item.id)">Remove</button>

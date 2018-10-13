@@ -87,4 +87,8 @@ export class ExpanseNotesComponent implements OnInit {
         }
         this.getListByDate();
     }
+
+    calculateSum(): number {
+        return this.list.reduce((accum, el) => accum + el.amount, 0);
+    }
 }
