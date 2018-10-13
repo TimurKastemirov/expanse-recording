@@ -26,12 +26,12 @@ export class ExpanseNotesComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.getList();
+        this.getListByDate();
     }
 
-    getList() {
-        this.expanseService.getList()
-            .subscribe( list => this.list = list)
+    getListByDate() {
+        this.expanseService.getListByDate(this.date)
+            .subscribe( list => {this.list = list; })
             .unsubscribe();
     }
 
@@ -50,7 +50,7 @@ export class ExpanseNotesComponent implements OnInit {
             if (reason) {
                 this.expanseService.saveItem(id, item).subscribe( () => {
                     // can be argument for savedID
-                    this.getList();
+                    this.getListByDate();
                 }).unsubscribe();
             }
             a.unsubscribe();
@@ -74,10 +74,17 @@ export class ExpanseNotesComponent implements OnInit {
             if (result) {
                 this.expanseService.deleteItem(id).subscribe( () => {
                     // can be argument for deletedID
-                    this.getList();
+                    this.getListByDate();
                 }).unsubscribe();
             }
             a.unsubscribe();
         });
+    }
+
+    onValueChange(value: Date) {
+        if (value) {
+            this.date = value;
+        }
+        this.getListByDate();
     }
 }

@@ -1,6 +1,12 @@
 <div class="row">
 	<div class="col-md-4">
-		<input type="text" class="form-control" placeholder="Datepicker" bsDatepicker [(ngModel)]="date" [bsConfig]="bsConfig" />
+		<input type="text" class="form-control"
+		       placeholder="Datepicker"
+		       bsDatepicker
+		       [(ngModel)]="date"
+		       [bsConfig]="bsConfig"
+		       (bsValueChange)="onValueChange($event)"
+		/>
 	</div>
 	<div class="col-md-2 offset-6" style="text-align: right">
 		<button type="button" class="btn btn-primary" (click)="editNote(0)">Add New</button>

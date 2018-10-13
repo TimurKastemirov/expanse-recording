@@ -1,4 +1,6 @@
 import { Observable, of } from 'rxjs';
+import * as moment from 'moment';
+import { format } from '../../structures/date-format';
 
 export class Storage {
 
@@ -99,5 +101,33 @@ export class Storage {
         data.list = list;
         window.localStorage.setItem(this.key, this.mySetter(data));
         return of(itemForDelete.id);
+    }
+
+    getListByDate(dateString: string): Observable<any> {
+        if (dateString) {
+            const list = this.myGetter(window.localStorage.getItem(this.key)).list;
+            const items = list.filter((el) => el.date === dateString);
+            if (items) {
+                return of(items);
+            }
+            // throw new Error('No item with id ' + id); // don't need error
+        }
+        return of([]);
+    }
+
+    getListByDaterange(dateRange: string[]): Observable<any> {
+        if (dateRange.length === 2) {
+            const startDate = moment(dateRange[0], format);
+            const endDate = moment(dateRange[1], format);
+            const list = this.myGetter(window.localStorage.getItem(this.key)).list;
+            const items = list.filter((el) => {
+                const date = moment(el.date, format);
+                return (date >= startDate && date <= endDate);
+            });
+            if (items) {
+                return of(items);
+            }
+        }
+        return of([]);
     }
 }
